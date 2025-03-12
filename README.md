@@ -1,7 +1,7 @@
 
 # LUS4TB Prototype
 
-<img align="right" src="assets/images/lus4tb-logo.png" alt="Logo" height="200" />
+<img align="right" src="assets/images/LUS4TB-logo.png" alt="Logo" height="200" />
 
 This repository contains a prototype for the LUS4TB app—a React Native application built with [Expo](https://expo.dev") in the course of my master thesis. The app offers features to help healthcare workers in low- and middle-income countries (LMICs) assess the Tuberculosis (TB) risk of patients using the Butterfly Network point-of-care ultrasound.
 
