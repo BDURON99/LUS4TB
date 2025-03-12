@@ -1,0 +1,48 @@
+{
+  "expo": {
+    "name": "UltrAI-v3",
+    "slug": "UltrAI-v3",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/icon.png",
+    "scheme": "myapp",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      }
+    },
+    "web": {
+      "bundler": "metro",
+      "output": "static",
+      "favicon": "./assets/images/favicon.png"
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/images/LUS4TB-logo.png",
+          "imageWidth": 200,
+          "resizeMode": "contain",
+          "backgroundColor": "#ffffff"
+        }
+      ],
+      "expo-font",
+      "expo-asset",
+      ["expo-image-picker",
+      {
+        "photosPermission": "To upload and analyze images, this app needs access to your photo library."
+      }]
+    ],
+    "experiments": {
+      "typedRoutes": true
+    },
+    "jsEngine": "hermes"
+  }
+}

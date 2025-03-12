@@ -1,34 +1,21 @@
+
 # LUS4TB Prototype
-An AI-assited mHealth app for tuberculosis triage using lung ultrasounds.
 
-This repository contains a prototype for the LUS4TB app—a React Native application built with Expo in the course of my master thesis. The app offers features to help healthcare workers in low- and middle-income countries (LMICs) assess the Tuberculosis (TB) risk of patients using the Butterfly Network point-of-care ultrasound.
+<img align="right" src="assets/images/lus4tb-logo.png" alt="Logo" height="200" />
 
-## Overview
+This repository contains a prototype for the LUS4TB app—a React Native application built with [Expo](https://expo.dev") in the course of my master thesis. The app offers features to help healthcare workers in low- and middle-income countries (LMICs) assess the Tuberculosis (TB) risk of patients using the Butterfly Network point-of-care ultrasound.
 
-LUS4TB is designed to support healthcare workers by providing tools to mainly:
+
+### Overview
+
+LUS4TB aims to support healthcare workers by providing a tool to mainly:
 
 - **Enter Patient Information:** Quickly input and manage patient details.
-- **Upload or Record Images:** Capture ultrasound images for specific anatomical key sites.
+- **Record Images (or Upload):** Capture ultrasound images for specific anatomical key sites.
 - **Retrieve Predicted TB Risk:** Automatically generate TB risk predictions based on ultrasound imaging.
 
-The prototype demonstrates a user-friendly interface and integrates key features such as image upload (including bulk upload and per-site uploads), examination overviews with risk indicators, and settings to toggle guidance modes.
+The prototype was designed following a user-centered approach.
 
-## Features
-
-- **Patient Management:**  
-  Enter and view patient details along with their examination history.
-
-- **Examination Overview:**  
-  Display examination cards that show patient information, the predicted TB risk, recommended actions, and a preview of associated ultrasound images.
-
-- **Key Site Image Upload:**  
-  Upload images for 14 anatomical key sites. Key sites are grouped (e.g., Front, Lateral, Back) and the app tracks progress across sites.
-
-- **Bulk Upload Option:**  
-  An option to upload multiple images at once using a dedicated bulk upload area.
-
-- **Settings & Guidance:**  
-  Toggle between guidance modes for additional help during the examination process.
 
 ## Installation
 
@@ -39,33 +26,131 @@ The prototype demonstrates a user-friendly interface and integrates key features
 
 ### Steps
 
-1. **Clone the Repository:**
+1. Clone the repository
+
+2. Install dependencies
 
    ```bash
-   git clone https://github.com/yourusername/LUS4TB-prototype.git
-   cd LUS4TB-prototype
+   npm install
+   ```
+
+3. Start the app
+
+   ```bash
+    npx expo start
+   ```
+
+In the output, you'll find options to open the app in a
+
+- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
+- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
+- [Expo Go](https://expo.dev/go), a sandbox for trying out the app directly on your phone
+
+
+## Main User and Data Flow
+
+1. 	Home Screen:
+The user initiates a new analysis, which creates an empty Examination object stored in global state.
+
+2.	New Analysis Screen:
+Patient data is collected via a form and saved in the global Examination context.
+
+3.	Image Acquisition:
+The user chooses a method:
+	•	Capture: Images are captured using a mock ultrasound tool.
+	•	Upload: Images are selected from the device’s gallery.
+The selected images are appended to the Examination object.
+
+4.	Analysis:
+The app simulates a TB risk analysis by generating random predictions, calculates overall risk, and updates the Examination object accordingly.
+The prototype does not include the AI models (Ultr-AI and Ultr-AI signs) at the time of submitting the thesis.
+
+5.	Result & Report Export:
+A report is generated (and can be exported as a PDF) based on the Examination data. The report includes patient info, symptoms, analysis results, and recommended actions.
+
+6.	Saving & Clearing Data:
+The final Examination data is saved (e.g., in AsyncStorage) and the global context is cleared to prepare for the next analysis.
+
+
+### Configuration
+
+All Tuberculosis risk thresholds, recommended actions, and the summary template are defined in src/config/tbRiskConfig.ts:
    
-2.	**Install Dependencies:**
-     ```bash
-     yarn install
-     # or
-     npm install
+## Directory Structure
 
-3.	**Start the Expo Development Server:**
-       ```bash
-       npx expo start
-       
-4. **Run the App:** 
+```bash
+src/
+├── app/ 			# Application screens (Home, NewAnalysis, Scan, etc.)
+│   ├── index.tsx 	# Home screen of the application
+│   ├── _layout.tsx # Main entry point for the application (root layout)
+│   └── ...
+├── assets/ 		# Static assets: images, fonts, etc.
+├── components/ 	# Components grouped by screen or type
+│   ├── ui/  		# Reusable Gluestack UI components (Button, AlertDialog, Spinner, ect.)
+│   └── ...
+├── config/   		# Configuration files (tbRiskConfig.ts, ect.)
+├── context/ 		# Global state management (ExaminationContext, SettingsContext, ect.)
+├── models/ 		# Data models and enums (Examination, Enums, ect.)
+├── services/ 		# Data persistence (examinationService, imageService, ect.)
+└── ...
+```
 
+## Screenshots of the App
+<table style="border-collapse: collapse; width: 100%;">
+  <tr>
+    <td align="center" style="padding: 10px;">
+      <img src="assets/images/app-demo/demo-home.png" alt="Home Screen" height="350" style="border: 2px solid black; border-radius: 8px;" /><br>
+      <strong>Home Screen</strong>
+    </td>
+    <td align="center" style="padding: 10px;">
+      <img src="assets/images/app-demo/demo-form4.png" alt="New Analysis" height="350" style="border: 2px solid black; border-radius: 8px;" /><br>
+      <strong>New Analysis</strong>
+    </td>
+    <td align="center" style="padding: 10px;">
+      <img src="assets/images/app-demo/demo-option.png" alt="Image Option" height="350" style="border: 2px solid black; border-radius: 8px;" /><br>
+      <strong>Image Option</strong>
+    </td>
+    <td align="center" style="padding: 10px;">
+      <img src="assets/images/app-demo/demo-upload.png" alt="Image Upload" height="350" style="border: 2px solid black; border-radius: 8px;" /><br>
+      <strong>Image Upload</strong>
+    </td>
+  </tr>
+  <tr>
+    <td align="center" style="padding: 10px;">
+      <img src="assets/images/app-demo/demo-helper.png" alt="Scan Helper" height="350" style="border: 2px solid black; border-radius: 8px;" /><br>
+      <strong>Scan Helper</strong>
+    </td>
+    <td align="center" style="padding: 10px;">
+      <img src="assets/images/app-demo/demo-analyse.png" alt="Scan Protocol" height="350" style="border: 2px solid black; border-radius: 8px;" /><br>
+      <strong>Scan Protocol</strong>
+    </td>
+    <td align="center" style="padding: 10px;">
+      <img src="assets/images/app-demo/demo-result2.png" alt="Result" height="350" style="border: 2px solid black; border-radius: 8px;" /><br>
+      <strong>Result</strong>
+    </td>
+    <td align="center" style="padding: 10px;">
+      <img src="assets/images/app-demo/demo-settings.png" alt="Settings" height="350" style="border: 2px solid black; border-radius: 8px;" /><br>
+      <strong>Settings</strong>
+    </td>
+  </tr>
+</table>
 
-   You can use the Expo Go app on your mobile phone or an emulator to run the application.
-   Press _i_ to open an iOS simulator, _a_ for an Android and _w_ for the web.
-   
-### Directory Structure
+---
 
+### Disclaimer
 
+The Ultr-AI models where not integrated in the prototype in the course of the master thesis for time constraint reasons, a mock up is implemented in the meanwhile. The Butterfly Network SDK was not integrated as part of the research study for pricing issues, a mock up is implemented in the prototype.
+
+### Future Work
+
+As part of the research done to develop a user-centered application for TB triage, some key features could be implemented in the future, including:
+- Compute a pre-test probability of the TB risk of the patient based on the forms data, to refine the AI-based predicted TB risk 
+- User management 
+- Introduction flow to use when training staff on how to use the app
 
 ### Acknowledgements
-- Built with React Native and Expo.
-- Icons provided by Ionicons.
+
+- Built with [React Native](https://reactnative.dev), [Expo](https://expo.dev) and [Gluestack](https://gluestack.io).
+- Icons provided by Ionicons, Expo, Gluestack.
 - Special thanks to the Butterfly Network for inspiring point-of-care ultrasound innovations and to the global healthcare community for their continued work in LMICs!
+
