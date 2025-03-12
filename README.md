@@ -139,7 +139,7 @@ src/
 
 ### Disclaimer
 
-The Ultr-AI models where not integrated in the prototype in the course of the master thesis for time constraint reasons, a mock up is implemented in the meanwhile. The Butterfly Network SDK was not integrated as part of the research study for pricing issues, a mock up is implemented in the prototype.
+Due to time constraints, the Ultr-AI models were not integrated into the prototype during the course of the master’s thesis. Instead, a mock implementation was used as a placeholder. Additionally, the Butterfly Network SDK was not incorporated into the research study due to pricing limitations, and a mock version was implemented in the prototype as an alternative.
 
 ### Future Work
 
