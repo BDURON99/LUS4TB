@@ -76,8 +76,9 @@ The final Examination data is saved (e.g., in AsyncStorage) and the global conte
 
 All Tuberculosis risk thresholds, recommended actions, and the summary template are defined in src/config/tbRiskConfig.ts:
 
-<img align="right" src="assets/images/LUS4TB-userflow.png" alt="userflow" height="200" />
-
+<div align="center">
+  <img src="assets/images/LUS4TB-userflow.png" alt="userflow" height="500" />
+</div>
 
 ## Directory Structure
 
@@ -99,7 +100,7 @@ src/
 ```
 
 ## Screenshots of the App
-<table style="border-collapse: collapse; width: 100%;">
+<table align="center" style="border-collapse: collapse; width: 100%;">
   <tr>
     <td align="center" style="padding: 10px;">
       <img src="assets/images/app-demo/demo-home.png" alt="Home Screen" height="350" style="border: 2px solid black; border-radius: 8px;" /><br>
