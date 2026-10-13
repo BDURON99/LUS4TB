@@ -1,4 +1,3 @@
-
 # LUS4TB Prototype
 
 <img align="right" src="assets/images/LUS4TB-logo.png" alt="Logo" height="200" />
@@ -153,4 +152,7 @@ As part of the research done to develop a user-centered application for TB triag
 - Built with [React Native](https://reactnative.dev), [Expo](https://expo.dev) and [Gluestack](https://gluestack.io).
 - Icons provided by Ionicons, Expo, Gluestack.
 - Special thanks to the Butterfly Network for inspiring point-of-care ultrasound innovations and to the global healthcare community for their continued work in LMICs!
+
+_This branch contains the version of the project submitted at time of thesis (March 19, 2025)_
+
 
